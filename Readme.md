@@ -14,18 +14,19 @@
    * Need to install server 'uvicorn module' to host,for installing
    ```bash
    pip install uvicorn
-   ```  
-## hello.py
-* create a file as <file-name.py>
-* Now, define function which prints a message like as i did on **hello.py**
-* For debugging, Run -> add configuration -> fastapi -> 'file-name.py' ->F5
-* As we installed uvicorn server, it will host application on specific server with ip address
-* Now,we have to request to that server
-* Now,upon successful execution, we will be able to see message on our browser
-   * By requsting to the server where it is hosting
-
+   ```
+## Library
+* This folder has all neccessary folders and modules,
+   * Which helps in creating Docker container
+   * Taking inputs from the user who is executing this, but not from others
+   * Storing data in postgres database, Accessing data
+   * With the help of pre-defined modules
+      * Sqlalchemy
+      * FastAPI
+      * Uvicorn
+   * [ref](https://github.com/Srikanthkovuri/REST-API/tree/main/Library) 
 ## numeric
-* This folder has a modile **main.py**,which has
+* This folder has a module **main.py**,which has
   * Classes for taking inputs
       * NumericReq 
   * Showing outputs
@@ -36,4 +37,16 @@
 * Now,upon successful execution, we will be able to see **result** in Response-Body on our browser,
   * By requsting to the server where it is hosting
   * By changing Requestclass inputs 
+* [refer](https://github.com/Srikanthkovuri/REST-API/tree/main/numeric)
+
+ 
+## hello.py
+* create a file as <file-name.py>
+* Now, define function which prints a message like as i did on **hello.py**
+* For debugging, Run -> add configuration -> fastapi -> 'file-name.py' ->F5
+* As we installed uvicorn server, it will host application on specific server with ip address
+* Now,we have to request to that server
+* Now,upon successful execution, we will be able to see message on our browser
+   * By requsting to the server where it is hosting
+* [refer](https://github.com/Srikanthkovuri/REST-API/blob/main/hello.py)
 
