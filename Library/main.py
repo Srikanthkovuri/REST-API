@@ -1,8 +1,12 @@
 """This module describes about Library api 
 """
-from datetime import date
-from fastapi import FastAPI
+from fastapi import FastAPI,Depends
+from sqlalchemy.orm import Session
 from api.models import BookReq,BookRes
+from db.database import get_db,Base,engine
+from db.models import Books
+
+Base.metadata.create_all(bind=engine)
 
 app=FastAPI()
 
@@ -16,33 +20,24 @@ def hello():
     return {"messge":"Hello Srikanth"}
 
 @app.get("/books",response_model=list[BookRes])
-def get_books(request:BookReq):
+def get_books(db: Session=Depends(get_db)):
     """This function returns the books
 
     Args:
         request (BookReq): user-defined class with args
     """
-    response=[]
-    response.append(BookRes(
-        id='101',
-        title='Bhagvadgita',
-        author="Srikanth",
-        isbn="7569889785",
-        published_date=date.today()
-    ))
-    return response
+    return db.query(Books).all()
+    
 
 @app.post("/books",response_model=BookRes)
-def create_book(request: BookReq):
+def create_book(request: BookReq, db: Session=Depends(get_db)):
     """This function creates a book by taking inputs from user
 
     Args:
         request (BookReq): user-defined class with args
     """
-    return BookRes(
-        id="1001",
-        title=request.title,
-        author=request.author,
-        isbn=request.isbn,
-        published_date=request.published_date
-    )
+    db_books=Books(**request.model_dump())
+    db.add(db_books)
+    db.commit()
+    db.refresh(db_books)
+    return db_books

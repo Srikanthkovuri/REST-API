@@ -9,9 +9,9 @@ class BookReq(BaseModel):
     Args:
         BaseModel (class): pre-defined class
     """
-    title: str = Field(...,description="This Sherlock Holmes mystery involves a secret pact among four convicts",examples=["Beneath Mystery"])
-    author: str = Field(...,description="author name",examples=["SRIKANTH"])
-    isbn: str = Field(...,description="isbn number",examples=["7569889785"])
+    title: str = Field(...,description="This Sherlock Holmes mystery involves a secret pact among four convicts",example="Beneath Mystery")
+    author: str = Field(...,description="author name",example="SRIKANTH")
+    isbn: str = Field(...,description="isbn number",example="7569889785")
     published_date: date
 
 class BookRes(BaseModel):
@@ -20,8 +20,8 @@ class BookRes(BaseModel):
     Args:
         BaseModel (class): pre-defined class
     """
-    id: str=Field(...,description="id",examples=["1001"])
-    title: str = Field(...,description="This Sherlock Holmes mystery involves a secret pact among four convicts",examples=["Beneath Mystery"])
-    author: str = Field(...,description="author name",examples=["SRIKANTH"])
-    isbn: str = Field(...,description="isbn number",examples=["7569889785"])
+    id: int=Field(...,description="id",example="1001")
+    title: str = Field(...,description="This Sherlock Holmes mystery involves a secret pact among four convicts",example="Beneath Mystery")
+    author: str = Field(...,description="author name",example="SRIKANTH")
+    isbn: str = Field(...,description="isbn number",example="7569889785")
     published_date: date
